@@ -1,0 +1,8 @@
+#!/bin/bash -x
+sleep 2
+route=$(route -n | grep ppp0)
+test -z "$route" && { echo >&2 "No route for device ppp0"; exit; }
+route=($route)
+test ${#route[@]} -eq 8 || { echo >&2 "Route must have 8 parts"; exit; }
+route del -net ${route[0]} dev ${route[7]}
+route add -net 10.0.0.0 gw ${route[1]} netmask 255.0.0.0 dev ${route[7]}

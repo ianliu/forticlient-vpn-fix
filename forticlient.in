@@ -1,0 +1,21 @@
+#!/usr/bin/env expect
+set timeout 20
+set server "$env(SERVER)"
+set user   "$env(USER)"
+set passwd "$env(PASSWORD)"
+
+spawn bash -c "LD_PRELOAD=\"@@PREFIX@@/hack.so\" \"@@FORTICLIENT_CLI@@\" --server \"$server\" --vpnuser \"$user\""
+
+expect "Password for VPN:"
+send "$passwd\r";
+
+expect "Would you like to connect to this server? (Y/N)"
+send "Y\r";
+
+expect "STATUS::Tunnel running"
+system "@@PREFIX@@/fixroutes"
+
+expect "Attempt to close resolv.conf"
+system "@@PREFIX@@/fixresolvconf"
+
+interact
