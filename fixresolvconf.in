@@ -1,4 +1,4 @@
 #!/bin/sh
 resolvconf -fd ppp0
-echo -e "@@DOMAIN@@\n$(cat /etc/ppp/resolv.conf)" \
+echo -e "search @@DOMAIN@@\n$(cat /etc/ppp/resolv.conf)" \
 	| resolvconf -p -a ppp0
