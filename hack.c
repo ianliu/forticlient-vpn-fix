@@ -20,11 +20,6 @@ FILE *fopen(const char *pathname, const char *mode) {
     print("Attempt to open resolv.conf, returning magic pointer\n");
     return MAGIC_RESOLV_CONF;
   }
-  if (strcmp(pathname, "/etc/ppp/resolv.conf") == 0) {
-    print("Attempt to open ");
-    print(pathname);
-    print("\n");
-  }
   return _fopen(pathname, mode);
 }
 
