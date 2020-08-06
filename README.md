@@ -27,7 +27,7 @@ choice of variables. After that, install with `sudo make install`.
 
 ## What the heck
 
-The forticlient binary uses PPPd to create a connection with the remove server.
+The forticlient binary uses PPPd to create a connection with the remote server.
 PPPd will be called with the `usepeerdns` flag, which will then call
 `resolvconf` with the peer DNS. The problem here is that the peer doesn't
 report the search domain and doesn't include the `-p` flag for private (see
