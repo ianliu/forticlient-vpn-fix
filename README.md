@@ -25,6 +25,21 @@ For the script to work properly, you need to set some Make variables:
 To build the project, run `make DOMAIN=... FORTICLIENT_CLI=...` with your
 choice of variables. After that, install with `sudo make install`.
 
+## Running
+
+To run the VPN, execute
+
+```bash
+PASSWORD=mypassword sudo --preserve-env=PASSWORD \
+	SERVER=myserver:port
+	USER=myusername
+	$(BINDIR)/forticlient
+```
+
+We leave the password environment variable outside the `sudo` command to prevent
+it from leaking into the command line arguments of `sudo`, otherwise it would
+appear as clear text in `ps`, for instance.
+
 ## What the heck
 
 The forticlient binary uses PPPd to create a connection with the remote server.
