@@ -1,3 +1,9 @@
+# ** DEPRECATED **
+
+I have found the [openfortivpn](https://github.com/adrienverge/openfortivpn)
+project that implements the FortiClient's proprietary protocol. I'm using that
+now and so this project isn't needed anymore.
+
 # Forticlient VPN Fix
 
 Forticlient proprietary's VPN client messes up with the host's routing table
